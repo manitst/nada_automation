@@ -1,2 +1,2 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","12270","@regression Contact page","chromium","Thu Apr 03 18:11:19 IST 2025","passed","Thu Apr 03 18:11:31 IST 2025","","Nada\Pages\contactPage.spec.js","",""
+"","15005","@regression Contact page","chromium","Thu Apr 03 19:04:17 IST 2025","passed","Thu Apr 03 19:04:32 IST 2025","","Nada\Pages\contactPage.spec.js","",""
