@@ -22,6 +22,11 @@ export class HomePage {
         await expect(this.page.locator('text=Access your Home Equity —')).toBeVisible();
         await expect(this.page.locator('text=Access your Home Equity —')).toHaveText('Access your Home Equity —  No Debt, No Monthly Payments');
     }
-
+    async verifyHomePageLogo() {
+        const logo = this.page.locator('[alt="Nada Logo"]');
+        await expect(logo).toBeVisible();
+    }
 
 }
+//module.exports = HomePage;
+// Removed redundant export default statement

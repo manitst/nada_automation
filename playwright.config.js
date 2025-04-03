@@ -1,5 +1,7 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import SendSlackReport from "../playwright_automation/tests/Nada/Reports/SendSlackReport.js";
+
 
 /**
  * Read environment variables from file.
@@ -11,7 +13,20 @@ import { defineConfig, devices } from '@playwright/test';
 
 /**
  * @see https://playwright.dev/docs/test-configuration
+ * 
+ * 
  */
+const config = {
+  reporter: [["allure-playwright", { outputFolder: "allure-results" }]],
+};
+export async function onEnd() { // ✅ Explicit export for Playwright hooks
+  console.log("Tests completed. Sending report to Slack...");
+  const slackReport = new SendSlackReport();
+  await slackReport.sendReport();
+}
+
+
+
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -24,7 +39,12 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['html'],
+    ['list'],
+    ['allure-playwright', { outputDir: 'test-results/allure-results' }],
+    ['./tests/Nada/Reports/SendSlackReport.js']
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -36,7 +56,7 @@ export default defineConfig({
     // /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
-
+    outputDir: 'test-results/',
   /* Configure projects for major browsers */
   projects: [
     {
@@ -81,5 +101,7 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+ 
+  
 });
 
