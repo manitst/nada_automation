@@ -2,9 +2,7 @@ import { expect } from '@playwright/test';
 import { HomePage } from "../../Nada/Pages/homePage.js";
 //import HomePage from "../../Nada/Pages/homePage.js"
 
-export class ContactPage{
-
-   
+export class ContactPage{  
 
     constructor(page) {
        
@@ -15,9 +13,8 @@ export class ContactPage{
         this.lastnametext = this.page.locator('[id=":r3:"]');
         this.emailtext = this.page.locator('[id=":r4:"]');
         this.phonenumbertext = this.page.locator('[id=":r5:"]');
-        this.nextbtn = this.page.locator('[id="pos_email_next_button"]'); 
-
-    }
+        this.nextbtn = this.page.locator('[id="pos_email_next_button"]');
+            }
   
     async navigateToHomePage() {
         const homepage = new HomePage(this.page);
@@ -58,15 +55,12 @@ export class ContactPage{
         await this.phonenumbertext.fill(phonenumber);
     } 
     async clickNextButton() {
-        //await this.page.locator('[id="pos_email_next_button"]').click();
-        await this.nextbtn.click();
+            await this.nextbtn.click();
     }
     async verifyContactPage() {
         await expect(this.page.getByRole('link', { name: '(833) 463-' })).toBeVisible();
         await expect(this.page).toHaveURL('https://hitch-hei.onrender.com/apply/login');
-        
-
-    }
-  
+          }
+      
 }
 //module.export =  contactPage;

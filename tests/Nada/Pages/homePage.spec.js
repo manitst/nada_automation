@@ -9,15 +9,15 @@ test('@smoke Home page', async ({ page }) => {
    await homepage.navigateToHomePage()
    await homepage.verifyHomePage()
    await homepage.verifyHomePageLogo()
-   generateReport(page, 'Home Page')
-   
-   //await page.goto('https://hitch-hei.onrender.com/');
-   //await expect(page.locator('text=Access your Home Equity —')).toBeVisible();
-   //await expect(page.locator('text=Access your Home Equity —')).toHaveText('Access your Home Equity —  No Debt, No Monthly Payments');
+   await homepage.verifyNMLSConsumerAccessLink()
+   await homepage.verifyPrivacyLink()
+   await homepage.verifyTermsLink()
+   await homepage.verifyLicensingLink()
+   await homepage.verifyHeaderFAQlink()
+   await homepage.verifyHeaderWholesalePortalLoginbtn()  
+   await homepage.verifyHeaderConsumerLoginbtn()
+   await homepage.verifyHeaderApplyNowbtn()
+   await homepage.verifyFAQVideoIsPresent()
+   await homepage.verifyFAQVideoPlay()   
 });
 
-//  test('@smoke Home page', async ({ page }) => {
-//     await page.goto('https://hitch-hei.onrender.com/');
-//     //await expect(page.locator('text=Access your Home Equity —')).toBeVisible();
-//     await expect(page.locator('text=Access your Home Equity —')).toHaveText('Access your Home Equity —  No Debt, No Monthly Payments');
-//  });

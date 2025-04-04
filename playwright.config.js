@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
-import SendSlackReport from "../playwright_automation/tests/Nada/Reports/SendSlackReport.js";
+
 
 
 /**
@@ -16,16 +16,6 @@ import SendSlackReport from "../playwright_automation/tests/Nada/Reports/SendSla
  * 
  * 
  */
-const config = {
-  reporter: [["allure-playwright", { outputFolder: "allure-results" }]],
-};
-export async function onEnd() { // ✅ Explicit export for Playwright hooks
-  console.log("Tests completed. Sending report to Slack...");
-  const slackReport = new SendSlackReport();
-  await slackReport.sendReport();
-}
-
-
 
 export default defineConfig({
   testDir: './tests',
@@ -40,23 +30,26 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html'],
+    
     ['list'],
-    ['allure-playwright', { outputDir: 'test-results/allure-results' }],
-    ['./tests/Nada/Reports/SendSlackReport.js']
+    ['allure-playwright'],
+    //['./tests/Nada/Reports/SendSlackReport.js'],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
-      video: 'on',
-      launchOptions: {
-        slowMo:500
-      },
+    video: 'on',
+    launchOptions: {
+      slowMo: 500
+    },
     // /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    /* Configure action timeout */
+    actionTimeout: 0, 
   },
-    outputDir: 'test-results/',
+  outputDir: 'test-results',
   /* Configure projects for major browsers */
   projects: [
     {
@@ -101,7 +94,7 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
- 
-  
+
+
 });
 

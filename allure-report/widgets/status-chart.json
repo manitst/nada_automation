@@ -1,1 +1,1 @@
-[{"uid":"bb1d3c8b2f4748fe","name":"@regression Contact page","time":{"start":1743687257416,"stop":1743687272421,"duration":15005},"status":"passed","severity":"normal"}]
+[{"uid":"a4e3031e6e44c221","name":"@smoke Home page","time":{"start":1743778796881,"stop":1743778829139,"duration":32258},"status":"broken","severity":"normal"},{"uid":"60ef32425e9fdd99","name":"@smoke Home page","time":{"start":1743789230504,"stop":1743789245015,"duration":14511},"status":"passed","severity":"normal"}]
