@@ -18,6 +18,7 @@ test('@smoke Home page', async ({ page }) => {
    await homepage.verifyHeaderConsumerLoginbtn()
    await homepage.verifyHeaderApplyNowbtn()
    await homepage.verifyFAQVideoIsPresent()
-   await homepage.verifyFAQVideoPlay()   
+   await homepage.verifyFAQVideoPlay()
+   await homepage.verifyHomePagebtns()   
 });
 

@@ -14,6 +14,11 @@ export class HomePage {
         this.consumerLoginbtn = this.page.getByRole('link', { name: 'Consumer Login' })
         this.applynowbtn = this.page.getByRole('link', { name: 'Apply' }).first();
         this.FAQVideo = this.page.locator('iframe[title="FAQ Video"]').contentFrame().locator('.ytp-cued-thumbnail-overlay-image');
+        this.applynowHerobtn = this.page.getByRole('button', { name: 'Apply Now' }).nth(1);
+        this.getStartedbtn = this.page.getByRole('button', { name: 'Get Started' }).first();
+        this.getStartedHomeEquitySectionbtn = this.page.getByRole('button', { name: 'Get Started' }).nth(1);
+        this.learnMorebtn = this.page.getByRole('button', { name: 'Learn More' });
+        this.unlockOfferbtn = this.page.getByRole('button', { name: 'Unlock Offer' })
     }
 
     async navigateToHomePage() {
@@ -63,11 +68,11 @@ export class HomePage {
         const linkText = await this.applynowbtn.getAttribute('href');
         expect(linkText).toBe('/apply/contact');
     }
-     async verifyFAQVideoIsPresent() {
+    async verifyFAQVideoIsPresent() {
          await expect(this.FAQVideo).toBeVisible();
          
     }
-      async verifyFAQVideoPlay() {
+    async verifyFAQVideoPlay() {
         
             const frame = await this.page.frameLocator('iframe[title="FAQ Video"]'); 
             const playButton = await frame.getByRole('button', { name: 'Play' });
@@ -86,5 +91,12 @@ export class HomePage {
           
             await pauseButton.click({ force: true }); // Pause the video if needed.
           }
+    async verifyHomePagebtns() {
+        await expect(this.applynowHerobtn).toBeVisible();
+        await expect(this.getStartedbtn).toBeVisible();
+        await expect(this.getStartedHomeEquitySectionbtn).toBeVisible();
+        await expect(this.learnMorebtn).toBeVisible();
+        await expect(this.unlockOfferbtn).toBeVisible();
+    }    
 
 }

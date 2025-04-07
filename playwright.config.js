@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
-
+import fs from 'fs';
 
 
 /**
@@ -18,6 +18,11 @@ import { defineConfig, devices } from '@playwright/test';
  */
 
 export default defineConfig({
+
+  
+
+
+
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -95,6 +100,11 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 
+ 
 
 });
 
+if (fs.existsSync('allure-results')) {
+  fs.rmSync('allure-results', { recursive: true, force: true });
+  console.log("✅ Deleted previous Allure results.");
+}
