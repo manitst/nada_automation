@@ -9,10 +9,10 @@ export class ContactPage{
         //console.log("runner page ", page);
         this.page = page;
         this.applynowbtn = this.page.locator('[id=":r3:"]');
-        this.firstnametext = this.page.locator('[id=":r2:"]');
-        this.lastnametext = this.page.locator('[id=":r3:"]');
-        this.emailtext = this.page.locator('[id=":r4:"]');
-        this.phonenumbertext = this.page.locator('[id=":r5:"]');
+        this.firstnametext = this.page.locator('[id=":r0:"]');
+        this.lastnametext = this.page.locator('[id=":r1:"]');
+        this.emailtext = this.page.locator('[id=":r2:"]');
+        this.phonenumbertext = this.page.locator('[id=":r3:"]');
         this.nextbtn = this.page.locator('[id="pos_email_next_button"]');
             }
   
@@ -25,7 +25,7 @@ export class ContactPage{
         await this.applynowbtn.click();
     } 
     async verifyFirstNameText() {
-        const placeHolderText = await this.page.locator('[id=":r2:"]').getAttribute('placeholder');
+        const placeHolderText = await this.page.locator('[id=":r0:"]').getAttribute('placeholder');
         expect(placeHolderText).toBe('Enter First Name');
     }
     async enterFirstname(firstname) {
@@ -33,7 +33,7 @@ export class ContactPage{
           
     }
     async verifyLastNameText() {
-        const placeHolderText = await this.page.locator('[id=":r3:"]').getAttribute('placeholder');
+        const placeHolderText = await this.page.locator('[id=":r1:"]').getAttribute('placeholder');
         expect(placeHolderText).toBe('Enter Last Name');
     }
     async enterLastname(lastname) {
@@ -41,14 +41,14 @@ export class ContactPage{
         
     }
     async verifyEmailText() {
-        const placeHolderText = await this.page.locator('[id=":r4:"]').getAttribute('placeholder');
+        const placeHolderText = await this.page.locator('[id=":r2:"]').getAttribute('placeholder');
         expect(placeHolderText).toBe('Enter email address');
     }
     async enterEmail(email) {
         await this.emailtext.fill(email);
     }  
     async verifyPhoneNumberText() {
-        const placeHolderText = await this.page.locator('[id=":r5:"]').getAttribute('placeholder');
+        const placeHolderText = await this.page.locator('[id=":r3:"]').getAttribute('placeholder');
         expect(placeHolderText).toBe('Enter mobile number');
     }
     async enterPhonenumber(phonenumber) {

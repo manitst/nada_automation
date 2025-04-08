@@ -2,6 +2,7 @@
 import { defineConfig, devices } from '@playwright/test';
 import fs from 'fs';
 
+ 
 
 /**
  * Read environment variables from file.
@@ -30,13 +31,14 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   //retries: process.env.CI ? 2 : 0,
-  retries: 0,
+  retries: 1,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     
     ['list'],
+    ['html'],
     ['allure-playwright'],
     //['./tests/Nada/Reports/SendSlackReport.js'],
   ],
@@ -99,12 +101,26 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+ // globalTeardown: './tests/Nada/Runner/globalTearDown.js', 
 
  
 
 });
 
-if (fs.existsSync('allure-results')) {
-  fs.rmSync('allure-results', { recursive: true, force: true });
-  console.log("✅ Deleted previous Allure results.");
+const path = 'allure-results';
+
+// Only delete previous results **before starting a fresh run**
+if (process.env.CLEAR_ALLURE === 'true') {
+  if (fs.existsSync(path)) {
+    fs.rmSync(path, { recursive: true, force: true });
+    console.log("✅ Deleted previous Allure results.");
+  }
 }
+
+export { path };
+
+
+// if (fs.existsSync('allure-results')) {
+//   fs.rmSync('allure-results', { recursive: true, force: true });
+//   console.log("✅ Deleted previous Allure results.");
+// }

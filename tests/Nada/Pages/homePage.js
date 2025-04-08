@@ -6,10 +6,15 @@ export class HomePage {
         this.page = page;
         this.homePageURL = 'https://hitch-hei.onrender.com/';
         this.NMLSConsumerAccesslink = this.page.locator('text=NMLS Consumer Access');
-        this.privacyLink = this.page.locator('text=Privacy');
-        this.termsLink = this.page.locator('text=Terms');
-        this.licensingLink = this.page.locator('text=Licensing');
+        //this.privacyLink = this.page.locator('text=Privacy');
+        this.privacyLink = this.page.getByRole('link', { name: 'Privacy' , exact: true});
+        //this.termsLink = this.page.locator('text=Terms');
+        this.termsLink = this.page.getByRole('link', { name: 'Terms' , exact: true});
+        //this.licensingLink = this.page.locator('text=Licensing');
+        this.licensingLink = this.page.getByRole('link', { name: 'Licensing' , exact: true});
         this.FAQLink = this.page.getByRole('link', { name: 'FAQs' })
+        this.FAQHeaderbtn = this.page.getByRole('button', { name: 'FAQs' })
+        
         this.wholesalePrtalLoginbtn = this.page.getByRole('link', { name: 'Wholesale Portal Login' })
         this.consumerLoginbtn = this.page.getByRole('link', { name: 'Consumer Login' })
         this.applynowbtn = this.page.getByRole('link', { name: 'Apply' }).first();
@@ -97,6 +102,30 @@ export class HomePage {
         await expect(this.getStartedHomeEquitySectionbtn).toBeVisible();
         await expect(this.learnMorebtn).toBeVisible();
         await expect(this.unlockOfferbtn).toBeVisible();
-    }    
+    } 
+    async verifyClickingFAQbutton() {
+        await this.FAQHeaderbtn.click();
+        const currentURL = this.page.url();
+        expect(currentURL).toContain('#FAQ');
+        await this.page.goto(this.homePageURL).maximize;
+    }
+    async verifyClickingApplyNowbtn() {
+        await this.applynowbtn.click();
+        const currentURL = this.page.url();
+        expect(currentURL).toContain('/apply/contact');
+        await this.page.goto(this.homePageURL).maximize;
+    }
+    async verifyClickingWholesalePortalLoginbtn() {
+        await this.wholesalePrtalLoginbtn.click();
+        const currentURL = this.page.url();
+        expect(currentURL).toContain('/portal');
+        await this.page.goto(this.homePageURL).maximize;
+    }
+    async verifyClickingConsumerLoginbtn() {
+        await this.consumerLoginbtn.click();
+        const currentURL = this.page.url();
+        expect(currentURL).toContain('/apply/login');
+        await this.page.goto(this.homePageURL).maximize;
+    } 
 
 }

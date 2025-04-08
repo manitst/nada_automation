@@ -1,3 +1,6 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","32258","@smoke Home page","chromium","Fri Apr 04 20:29:56 IST 2025","broken","Fri Apr 04 20:30:29 IST 2025","","Nada\Pages\homePage.spec.js","",""
-"","14511","@smoke Home page","firefox","Fri Apr 04 23:23:50 IST 2025","passed","Fri Apr 04 23:24:05 IST 2025","","Nada\Pages\homePage.spec.js","",""
+"","25092","@smoke @TC-NADA-07 Verify the FAQ video is present and plays","firefox","Tue Apr 08 19:16:00 IST 2025","passed","Tue Apr 08 19:16:25 IST 2025","","Nada\Tests\homePage.spec.js","",""
+"","35738","@smoke @TC-NADA-04 Verify header buttons directs to respective page","firefox","Tue Apr 08 19:15:39 IST 2025","broken","Tue Apr 08 19:16:14 IST 2025","","Nada\Tests\homePage.spec.js","",""
+"","24581","@smoke @TC-NADA-02 Verify the footer links of the Home page","firefox","Tue Apr 08 19:14:55 IST 2025","passed","Tue Apr 08 19:15:20 IST 2025","","Nada\Tests\homePage.spec.js","",""
+"","16656","@smoke @TC-NADA-01 Navigate to home page and Verify home page logo","firefox","Tue Apr 08 19:14:55 IST 2025","passed","Tue Apr 08 19:15:12 IST 2025","","Nada\Tests\homePage.spec.js","",""
+"","14541","@smoke @TC-NADA-05 Verify the header contains all the buttons","firefox","Tue Apr 08 19:15:14 IST 2025","passed","Tue Apr 08 19:15:28 IST 2025","","Nada\Tests\homePage.spec.js","",""
