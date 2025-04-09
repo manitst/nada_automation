@@ -6,11 +6,8 @@ export class HomePage {
         this.page = page;
         this.homePageURL = 'https://hitch-hei.onrender.com/';
         this.NMLSConsumerAccesslink = this.page.locator('text=NMLS Consumer Access');
-        //this.privacyLink = this.page.locator('text=Privacy');
         this.privacyLink = this.page.getByRole('link', { name: 'Privacy' , exact: true});
-        //this.termsLink = this.page.locator('text=Terms');
         this.termsLink = this.page.getByRole('link', { name: 'Terms' , exact: true});
-        //this.licensingLink = this.page.locator('text=Licensing');
         this.licensingLink = this.page.getByRole('link', { name: 'Licensing' , exact: true});
         this.FAQLink = this.page.getByRole('link', { name: 'FAQs' })
         this.FAQHeaderbtn = this.page.getByRole('button', { name: 'FAQs' })
