@@ -3,7 +3,7 @@ import { HomePage } from "../../Nada/Pages/homePage.js";
 //import HomePage from "../../Nada/Pages/homePage.js"
 
 export class ContactPage{  
-
+//export default class ContactPage {
     constructor(page) {
        
         //console.log("runner page ", page);

@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 
 export class HomePage {
-
+//export default class HomePage { 
     constructor(page) {
         this.page = page;
         this.homePageURL = 'https://hitch-hei.onrender.com/';
@@ -25,8 +25,8 @@ export class HomePage {
 
     async navigateToHomePage() {
 
-        await this.page.goto(this.homePageURL, { waitUntil: 'domcontentloaded' }).maximize;
-        await this.page.waitForLoadState('networkidle');
+        await this.page.goto(this.homePageURL, { waitUntil: 'domcontentloaded' });
+        //await this.page.waitForLoadState('networkidle');
         const element = (this.page.locator('text=Access your Home Equity —'));
         await expect(element).toBeVisible({ timeout: 10000 });
     }
