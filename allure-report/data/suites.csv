@@ -1,4 +1,3 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","14467","@regression Contact page","firefox","Thu Apr 10 19:26:54 IST 2025","passed","Thu Apr 10 19:27:08 IST 2025","","contactPage.spec.js","",""
-"","24366","@regression Contact page","webkit","Thu Apr 10 19:22:33 IST 2025","passed","Thu Apr 10 19:22:57 IST 2025","","contactPage.spec.js","",""
-"","11995","@regression Contact page","chromium","Thu Apr 10 19:22:33 IST 2025","passed","Thu Apr 10 19:22:45 IST 2025","","contactPage.spec.js","",""
+"","8735","@regression @TC-NADA-13 Verify user can enter email address","firefox","Fri Apr 11 17:37:37 IST 2025","passed","Fri Apr 11 17:37:45 IST 2025","","wholesalePortalLoginPage.spec.js","",""
+"","9304","@smoke @TC-NADA-CL-02-01 Verify user without email address","firefox","Thu Apr 10 19:34:33 IST 2025","passed","Thu Apr 10 19:34:42 IST 2025","","consumerLoginPage.spec.js","",""
