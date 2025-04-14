@@ -1,7 +1,7 @@
 import { exec } from 'child_process';
 import fetch from 'node-fetch'; // Ensure you have 'node-fetch' installed
 
-const TAG = process.argv[2] || '@TC-NADA-13'; // Pass the tag dynamically
+const TAG = process.argv[2] || '@TC-NADA-01'; // Pass the tag dynamically
 const SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"; // Replace with your Slack webhook
 
 const sendSlackMessage = async (message) => {
@@ -26,7 +26,7 @@ const runPlaywrightTests = () => {
       console.log('✅ All tests passed!');
 
       exec(`npx allure generate allure-results --clean -o allure-report`, async (err, out, serr) => {
-        console.log(out);
+        //console.log(out);
 
         if (err) {
           console.error(`⚠️ Failed to generate Allure report.\n`, serr);
@@ -42,3 +42,4 @@ const runPlaywrightTests = () => {
 
 // Run the test runner
 runPlaywrightTests();
+

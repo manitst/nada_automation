@@ -13,3 +13,9 @@ test('@regression @TC-NADA-13 Verify user can enter email address ', async ({ pa
     await wholesalePortalLoginPage.verifyEnterEmailPlaceHolderText();
     await wholesalePortalLoginPage.enterEmail('test_nada_consumer_login@yopmail.com');
     });
+    test('@regression @TC-NADA-14 Verify user can enter email address ', async ({ page }) => {
+        const wholesalePortalLoginPage = new WholesalePortalLoginPage(page);
+        await wholesalePortalLoginPage.navigateToWholesalePortalLoginPage()
+        await wholesalePortalLoginPage.enterEmail('test@gmail.com.@');  
+        await wholesalePortalLoginPage.verifyErrorMessage();
+        });

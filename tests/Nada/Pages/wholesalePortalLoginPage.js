@@ -31,4 +31,8 @@ export class WholesalePortalLoginPage {
         await this.enterEmailText.fill(email);
         expect(this.getMagicLinkbtn).toBeVisible();          
     } 
+    async verifyErrorMessage() {
+        await this.getMagicLinkbtn.click();
+        await expect(this.page.locator('text=User not found')).toBeVisible();
+    }
 }
