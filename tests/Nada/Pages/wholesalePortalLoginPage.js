@@ -12,6 +12,10 @@ export class WholesalePortalLoginPage {
         this.currentURL = 'https://hitch-hei.onrender.com'
         this.emailAddressLabelText = this.page.locator('#email-label')
         this.getMagicLinkbtn = this.page.getByRole('button', { name: 'Get magic link' })
+        //this.errorMessage = this.page.locator('#email-helper-text')  
+        this.errorMessageText = this.page.locator('[id="email-helper-text"]');
+        this.errorMessage = this.page.locator('text=User not found') 
+        
         
     }
     async navigateToWholesalePortalLoginPage()
@@ -33,6 +37,17 @@ export class WholesalePortalLoginPage {
     } 
     async verifyErrorMessage() {
         await this.getMagicLinkbtn.click();
-        await expect(this.page.locator('text=User not found')).toBeVisible();
+        
+        //await expect(this.page.locator('text=User not found')).toBeVisible();
+        await expect(this.errorMessage).toBeVisible();
+        return this.errorMessage; 
+    }
+    verifyWithoutEmailAddress() {
+        this.enterEmailText.fill('');  
+        this.getMagicLinkbtn.click();
+        return this.errorMessageText;
+              
+         
+         
     }
 }

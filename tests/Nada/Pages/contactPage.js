@@ -1,12 +1,12 @@
 import { expect } from '@playwright/test';
-import { HomePage } from "../../Nada/Pages/homePage.js";
-//import HomePage from "../../Nada/Pages/homePage.js"
+import { HomePage } from "../../nada/pages/homePage.js";
+
 
 export class ContactPage{  
-//export default class ContactPage {
+
     constructor(page) {
        
-        //console.log("runner page ", page);
+     
         this.page = page;
         this.applynowbtn = this.page.locator('[id=":r3:"]');
         this.firstnametext = this.page.locator('[id=":r0:"]');
@@ -63,4 +63,3 @@ export class ContactPage{
           }
       
 }
-//module.export =  contactPage;

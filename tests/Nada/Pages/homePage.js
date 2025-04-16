@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 
 export class HomePage {
-    //export default class HomePage { 
+     
     constructor(page) {
         this.page = page;
         this.homePageURL = 'https://hitch-hei.onrender.com/';
@@ -101,7 +101,7 @@ export class HomePage {
 
         expect(currentTime).toBeGreaterThan(initialTime);
 
-        await pauseButton.click({ force: true }); // Pause the video if needed.
+        await pauseButton.click({ force: true }); 
     }
     verifyHomePageApplyNowbtn() {
         this.applynowHerobtn.waitFor();
@@ -124,27 +124,14 @@ export class HomePage {
         return this.unlockOfferbtn;
     }
     async verifyClickingFAQbutton() {
-        //this.FAQHeaderbtn.click();
-        //return this.page.url(-);
+        
         await this.FAQHeaderbtn.click();
         const currentURL = this.page.url();
         expect(currentURL).toContain('#FAQ');
         await this.page.goto(this.homePageURL);
     }
 
-    // async verifyClickingFAQLink() {
-    //     await this.FAQLink.waitFor({ state: 'visible' });
-    //     await this.FAQLink.click();
-    //     const currentURL = this.page.url();
-    //     expect(currentURL).toContain('#FAQ');
-    //     await this.page.goto(this.homePageURL).maximize;
-    // }  
-    // verifyClickingFAQbutton() {
-    //     this.FAQHeaderbtn.click();
-    //     const currentURL = this.page.url();
-    //     expect(currentURL).toContain('#FAQ');
-    //     this.page.goto(this.homePageURL).maximize;
-    // }
+   
   
     async verifyClickingWholesalePortalLoginbtn() {
         await this.wholesalePrtalLoginbtn.click();
