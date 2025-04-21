@@ -10,7 +10,6 @@ export class WholesalePortalLoginPage {
         this.enterEmailText = this.page.getByRole('textbox', { name: 'Email Address' })
         this.submitbtn = this.page.getByRole('button', { name: 'Submit' })
         this.successMessagePopup = this.page.locator('text=A magic link has been sent to your inbox')
-        
         this.emailAddressLabelText = this.page.locator('#email-label')
         this.getMagicLinkbtn = this.page.getByRole('button', { name: 'Get magic link' })
         this.errorMessageText = this.page.locator('[id="email-helper-text"]');
@@ -22,13 +21,13 @@ export class WholesalePortalLoginPage {
         this.magicLinkSignInbtn = this.page.locator('iframe[name="ifmail"]').contentFrame().getByRole('link', { name: 'Sign in' })
         
         this.loginWithPasswordInsteadLink = this.page.getByText('Login with password instead',{exact : false})
-        
+        this.loginWithMagicLinkInsteadlnk = this.page.getByText('Login with magic link instead',{exact : false})
         this.emailAddressText = this.page.getByRole('textbox', { name: 'Email Address' })
         this.passwordText = this.page.locator('#password-label')
-        //this.loginbtn = this.page.getByRole('button', { name: 'Login' })
-        //const loginbtn = CSS.escape("#:R4n6km6:");
-        
         this.loginbtn = this.page.locator('[id=":R4n6km6:"]')
+        this.passwordTogglebtn = this.page.getByRole('button', { name: 'toggle password visibility' })
+        this.passwordToggleText = this.page.locator('#password')
+        this.errorMessageInPortalLogin = this.page.locator('[id="password-helper-text"]') 
         
     }
     async navigateToWholesalePortalLoginPage()
@@ -105,7 +104,26 @@ export class WholesalePortalLoginPage {
         const currentPageURL = await this.page.url(); 
         return currentPageURL; 
     }
+    async togglePasswordVisibilityOn()
+    {
+        await this.passwordToggleText.waitFor({ state: 'visible' });
+        await this.passwordTogglebtn.click();
+        return this.passwordToggleText;
+        //await expect(this.passwordToggleText).toHaveAttribute('type', 'text');
+        //await this.passwordTogglebtn.click();
+        //await expect(this.passwordToggleText).toHaveAttribute('type', 'password');    
+    }
+    async togglePasswordVisibilityOff()
+    {
+        await this.passwordToggleText.waitFor({ state: 'visible' });
+        await this.passwordTogglebtn.click();
+        return this.passwordToggleText;
+     }
+     async clickLoginWithMagicLinkInstead() {
+        await this.loginWithMagicLinkInsteadlnk.waitFor({ state: 'visible' });
+        await this.loginWithMagicLinkInsteadlnk.click();
+        return this.getMagicLinkbtn;
+    }
 
-    
 
 }

@@ -1,3 +1,3 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","17358","@regression @TC-NADA-16 verify user can login with username password","chromium","Thu Apr 17 20:37:27 IST 2025","passed","Thu Apr 17 20:37:44 IST 2025","","wholesalePortalLoginPage.spec.js","",""
-"","10820","@regression @TC-NADA-16 verify user can login with username password","firefox","Thu Apr 17 19:36:33 IST 2025","failed","Thu Apr 17 19:36:44 IST 2025","","wholesalePortalLoginPage.spec.js","",""
+"","24825","@regression @TC-NADA-18 verify user cannot login into portal with invalid credentials","chromium","Mon Apr 21 16:56:53 IST 2025","passed","Mon Apr 21 16:57:18 IST 2025","","wholesalePortalLoginPage.spec.js","",""
+"","10438","@regression @TC-NADA-19 verify user redirected to passwordless login page","chromium","Mon Apr 21 15:18:44 IST 2025","passed","Mon Apr 21 15:18:54 IST 2025","","wholesalePortalLoginPage.spec.js","",""
