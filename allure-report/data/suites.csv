@@ -1,3 +1,2 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","24825","@regression @TC-NADA-18 verify user cannot login into portal with invalid credentials","chromium","Mon Apr 21 16:56:53 IST 2025","passed","Mon Apr 21 16:57:18 IST 2025","","wholesalePortalLoginPage.spec.js","",""
-"","10438","@regression @TC-NADA-19 verify user redirected to passwordless login page","chromium","Mon Apr 21 15:18:44 IST 2025","passed","Mon Apr 21 15:18:54 IST 2025","","wholesalePortalLoginPage.spec.js","",""
+"","15403","@regression @TC-NADA-22-1 verify the error messages when user does not enters any data","chromium","Tue Apr 22 19:23:16 IST 2025","passed","Tue Apr 22 19:23:31 IST 2025","","contactPage.spec.js","",""

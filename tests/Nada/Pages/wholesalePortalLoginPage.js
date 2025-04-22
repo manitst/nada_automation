@@ -108,9 +108,6 @@ export class WholesalePortalLoginPage {
         await this.passwordToggleText.waitFor({ state: 'visible' });
         await this.passwordTogglebtn.click();
         return this.passwordToggleText;
-        //await expect(this.passwordToggleText).toHaveAttribute('type', 'text');
-        //await this.passwordTogglebtn.click();
-        //await expect(this.passwordToggleText).toHaveAttribute('type', 'password');    
     }
     async togglePasswordVisibilityOff()
     {

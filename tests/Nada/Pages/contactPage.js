@@ -14,6 +14,10 @@ export class ContactPage{
         this.emailtext = this.page.locator('[id=":r2:"]');
         this.phonenumbertext = this.page.locator('[id=":r3:"]');
         this.nextbtn = this.page.locator('[id="pos_email_next_button"]');
+        this.errorMessageFirstName = this.page.getByText('First name required')
+        this.errorMessageLastName = this.page.getByText('Last name required');   
+        this.errorMessageEmail = this.page.getByText('Email required');
+        this.errorMessagePhoneNumber = this.page.getByText('Phone number required');    
             }
   
     async navigateToHomePage() {
@@ -24,33 +28,31 @@ export class ContactPage{
     async clickApplyNowButton() {
         await this.applynowbtn.click();
     } 
-    async verifyFirstNameText() {
-        const placeHolderText = await this.page.locator('[id=":r0:"]').getAttribute('placeholder');
-        expect(placeHolderText).toBe('Enter First Name');
+    async verifyFirstNamePlaceHolderText() {
+        this.firstnametext.waitFor();
+        return await this.firstnametext.getAttribute('placeholder');
     }
     async enterFirstname(firstname) {
         await this.firstnametext.fill(firstname);
-          
     }
-    async verifyLastNameText() {
-        const placeHolderText = await this.page.locator('[id=":r1:"]').getAttribute('placeholder');
-        expect(placeHolderText).toBe('Enter Last Name');
+    async verifyLastNamePlaceHolderText() {
+        this.lastnametext.waitFor();
+        return await this.lastnametext.getAttribute('placeholder');
     }
     async enterLastname(lastname) {
         await this.lastnametext.fill(lastname);
-        
     }
-    async verifyEmailText() {
-        const placeHolderText = await this.page.locator('[id=":r2:"]').getAttribute('placeholder');
-        expect(placeHolderText).toBe('Enter email address');
+    async verifyEmailPlaceHolderText() {
+        this.emailtext.waitFor();
+        return await this.emailtext.getAttribute('placeholder');
     }
     async enterEmail(email) {
         await this.emailtext.fill(email);
     }  
-    async verifyPhoneNumberText() {
-        const placeHolderText = await this.page.locator('[id=":r3:"]').getAttribute('placeholder');
-        expect(placeHolderText).toBe('Enter mobile number');
-    }
+    async verifyPhoneNumberPlaceHolderText() {
+        await this.phonenumbertext.waitFor();
+        return await this.phonenumbertext.getAttribute('placeholder');
+    }    
     async enterPhonenumber(phonenumber) {
         await this.phonenumbertext.fill(phonenumber);
     } 
@@ -60,6 +62,23 @@ export class ContactPage{
     async verifyContactPage() {
         await expect(this.page.getByRole('link', { name: '(833) 463-' })).toBeVisible();
         await expect(this.page).toHaveURL('https://hitch-hei.onrender.com/apply/login');
-          }
+    }
+    async verifyErrorMessageFirstName() {
+        await this.errorMessageFirstName.waitFor();
+        return await this.errorMessageFirstName.innerText();
+    }
+    async verifyErrorMessageLastName() {
+        await this.errorMessageLastName.waitFor();
+        return await this.errorMessageLastName.innerText();
+    }
+    async verifyErrorMessageEmail() {
+        await this.errorMessageEmail.waitFor();
+        return await this.errorMessageEmail.innerText();
+    }
+    async verifyErrorMessagePhoneNumber() {
+        await this.errorMessagePhoneNumber.waitFor();
+        return await this.errorMessagePhoneNumber.innerText();
+    }
+
       
 }
