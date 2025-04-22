@@ -1,5 +1,4 @@
-import { expect } from '@playwright/test'; 
-import CSSescape from 'css.escape'; 
+import { expect } from '@playwright/test';
 
 export class WholesalePortalLoginPage {
     constructor(page) {    
