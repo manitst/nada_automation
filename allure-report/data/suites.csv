@@ -1,3 +1,2 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","18249","@regression @TC-NADA-23 verify when the user enter valid data then user can proceed to next page","chromium","Wed Apr 23 13:26:42 IST 2025","passed","Wed Apr 23 13:27:00 IST 2025","","contactPage.spec.js","",""
-"","10290","@regression @TC-NADA-24 verify whether the correct menu is highlighted","chromium","Wed Apr 23 15:29:53 IST 2025","passed","Wed Apr 23 15:30:03 IST 2025","","contactPage.spec.js","",""
+"","21045","@regression @TC-NADA-30 verify placeholder text of all the text fields in home value page","chromium","Thu Apr 24 19:36:17 IST 2025","passed","Thu Apr 24 19:36:38 IST 2025","","homeValuePage.spec.js","",""
