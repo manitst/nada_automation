@@ -12,6 +12,16 @@ export class HomeValuePage {
         this.propertyTypeDropdownListItem = this.page.locator('[id=":rc:"]')
         this.propertyTypeSingleFamilyHome = this.page.getByRole('option', { name: 'Single Family' })
         this.nextbtn = this.page.getByRole('button', { name: 'Next' });
+        this.propertyDetailsMenu = this.page.getByRole('link', { name: 'Property Details' }) 
+        this.propertyDetailsMenuNumber = this.page.locator('//*[@id="__next"]/div[1]/div[2]/aside/div[2]/a[2]/div/div');
+        this.stepNumber = this.page.locator('span:has-text("Step 2")');
+        this.homeValueTextErrorMessage = this.page.getByText('Home value is required') 
+        this.mortgageBalanceTextErrorMessage = this.page.getByText('Mortgage balance is required')
+        this.propertyTypeDropdownErrorMessage = this.page.getByText('Please select Property type')
+        this.backbtn = this.page.getByText('Back'); 
+        //this.logOutbtn = this.page.getByRole('link', { name: 'Log Out' })
+        this.logOutbtn = this.page.getByText('Log Out')
+
     }
     async navigateToHomeValuePage() {
         const homepage = new HomePage(this.page);
@@ -54,6 +64,34 @@ export class HomeValuePage {
     verifyUserdirectedtoFinancialInfoPage() {
         return this.page.url();
     }
+    verifyHomeValueTextErrorMessage() {
+        this.homeValueTextErrorMessage.waitFor();
+        console.log('homeValueTextErrorMessage-', this.homeValueTextErrorMessage)
+        return this.homeValueTextErrorMessage.innerText();
+    }
+    verifyMortgageBalanceTextErrorMessage() {
+        this.mortgageBalanceTextErrorMessage.waitFor();
+        return this.mortgageBalanceTextErrorMessage.innerText();
+    }
+    verifyPropertyTypeDropdownErrorMessage() {
+        this.propertyTypeDropdownErrorMessage.waitFor();
+        return this.propertyTypeDropdownErrorMessage.innerText();
+    }
+    async clickBackButton() {
+        await this.backbtn.click();
+        await this.page.waitForTimeout(2000);
+    }
+    verifyUserDirectedToContactPage() {
+        return this.page.url();
+    }
+    async clickLogOutButton() {
+        await this.logOutbtn.click();
+        await this.page.waitForTimeout(2000);
+    }
+    verifyUserDirectedToHomePage() {
+        return this.page.url();
+    }
+
 
 
 }
