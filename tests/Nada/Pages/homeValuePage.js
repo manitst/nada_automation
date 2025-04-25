@@ -1,7 +1,7 @@
 import {} from '@playwright/test';
 import { HomePage } from '../pages/homePage.js';
 import { ContactPage } from '../pages/contactPage.js';
-import { generateUniqueEmail } from "../Utils/commonUtils.js";
+import { generateUniqueEmail } from "../utils/commonUtils.js";
 
 export class HomeValuePage {
     constructor(page) {
