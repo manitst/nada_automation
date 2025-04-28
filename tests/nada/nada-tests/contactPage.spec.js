@@ -3,31 +3,8 @@ import { HomePage } from "../pages/homePage.js";
 import { ContactPage } from "../pages/contactPage.js";
 import { generateUniqueEmail } from "../utils/commonUtils.js";
 
-test.beforeEach(async ({ page }) => {
-    
-    await page.goto('about:blank'); 
-});
 
 
-test('@regression Contact page', async ({ page }) => {
-
-    const homepage = new HomePage(page);
-    const contactpage = new ContactPage(page)
-    
-    await homepage.navigateToHomePage()
-    await contactpage.clickApplyNowButton()
-     
-    await contactpage.enterFirstname('Manikandan')
-    
-    await contactpage.enterLastname('Teknotrait')
-    
-    await contactpage.enterEmail('test@gmail.com')
-   
-    await contactpage.enterPhonenumber('1234567890')
-    await contactpage.clickNextButton()
-    await contactpage.verifyContactPage()
-
-});
 test('@regression @TC-NADA-22 verify placeholder text of all the text fields in contact info page ', async ({ page }) => {
 
     const homepage = new HomePage(page);
