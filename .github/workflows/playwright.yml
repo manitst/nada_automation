@@ -4,6 +4,12 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+on:
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types:
+      - completed
+
 jobs:
   test:
     timeout-minutes: 60
@@ -25,3 +31,20 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+        email_notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.teknotrait.manikandan@gmail.com }}
+          password: ${{ secrets.Techy()* }}
+          subject: GitHub Actions Workflow Report
+          to: teknotrait.manikandan@gmail.com
+          from: "GitHub Actions "
+          body: |
+            The workflow run has completed.
+            Status: ${{ github.event.workflow_run.conclusion }}
+
