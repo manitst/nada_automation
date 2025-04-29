@@ -32,7 +32,7 @@ import { HomePage } from "../pages/homePage.js";
       await homepage.verifyClickingConsumerLoginbtn()
       await homepage.verifyClickingApplyNowbtn()
    });
-   test('@smoke @homepage@regression  @TC-NADA-02 Verify the footer links of the Home page', async ({ page }) => {
+   test('@smoke @homepage @regression  @TC-NADA-02 Verify the footer links of the Home page', async ({ page }) => {
       const homepage = new HomePage(page);
       await homepage.navigateToHomePage()
       const linkText = await homepage.NMLSConsumerAccesslink.getAttribute('href');

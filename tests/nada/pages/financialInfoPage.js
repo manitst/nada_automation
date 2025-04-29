@@ -48,9 +48,9 @@ export class FinancialInfoPage {
             await this.creditscorebtw540and579.click();
             console.log('Credit score is between 540 and 579');
             return this.creditscorebtw540and579;    
-        } else if (creditScore > 580) {
+        } else if (creditScore >= 580) {
             await this.creditscorebtwabove580.click();
-            console.log('Credit score is above 580');
+            console.log('Credit score is equal or above 580');
             return this.creditscorebtwabove580;
         } else {
             throw new Error('Invalid credit score option');

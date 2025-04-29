@@ -59,7 +59,7 @@ test('@regression @TC-NADA-41 verify the user can navigate back to Home Value pa
     console.log('User successfully navigated back to Home Value page'); 
     
 });
-test('@regression @TC-NADA-42-1 verify the financial info page is highlighted', async ({ page }) => {
+test('@regression @TC-NADA-42-1 verify the financial info menu is highlighted', async ({ page }) => {
     const financialInfoPage = new FinancialInfoPage(page);
     await financialInfoPage.navigateToFinancialInfoPage() 
     const isHighlighted = await financialInfoPage.financialInfoMenu.evaluate((element) => {
@@ -75,7 +75,7 @@ test('@regression @TC-NADA-42-1 verify the financial info page is highlighted', 
         console.log('Financial Info menu is not highlighted in green color');
     }
 });
-test('@regression @TC-NADA-42 verify the financial info page number is displayed', async ({ page }) => {
+test('@regression @TC-NADA-42 verify the financial info step number is displayed and matches', async ({ page }) => {
     const financialInfoPage = new FinancialInfoPage(page);
     await financialInfoPage.navigateToFinancialInfoPage() 
     const financialInfoMenuNumber = await financialInfoPage.financialInfoMenuNumber.innerText();
