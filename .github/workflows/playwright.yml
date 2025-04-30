@@ -41,7 +41,7 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: ${{ secrets.MAIL_USERNAME }} 
+          username: ${{ secrets.MAIL_USERNAME}} 
           password: ${{ secrets.MAIL_PASSWORD}} 
           subject: GitHub Actions Workflow Report
           to: teknotrait.manikandan@gmail.com
