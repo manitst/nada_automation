@@ -24,7 +24,7 @@ export class HasFBMPage {
     async navigateToHasFBMPage() {
         const financialInfoPage = new FinancialInfoPage(this.page);
         await financialInfoPage.navigateToFinancialInfoPage();
-        await financialInfoPage.clickCreditScoreBtn('580'); 
+        await financialInfoPage.clickCreditScoreBtn('600'); 
         await financialInfoPage.clickLatePaymentsDetailsNoBtn(); 
         await financialInfoPage.clickNextButton();// Return the current URL of the page
         return this.page.url(); // Return the current URL of the page

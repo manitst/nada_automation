@@ -39,7 +39,7 @@ export default defineConfig({
     
     ['list'],
     ['html'],
-    //['allure-playwright'],
+    ['allure-playwright'],
     //['./tests/Nada/Reports/SendSlackReport.js'],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
