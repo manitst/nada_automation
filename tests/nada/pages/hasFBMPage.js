@@ -56,7 +56,7 @@ export class HasFBMPage {
     }
     async clickNextButton() {
         await this.nextbtn.click();
-        await this.page.waitForTimeout(2000); 
+        //await this.page.waitForNavigation({ waitUntil: 'networkidle' });
         console.log('Next button in has FBM page is clicked');
         return this.page.url(); 
     }  

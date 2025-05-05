@@ -8,6 +8,9 @@ import {FinancialInfoPage} from '../pages/financialInfoPage.js';
 //     expect(await financialInfoPage.verifyUserdirectedtoFinancialInfoPage()).toBe('https://hitch-hei.onrender.com/apply/credit-score');
 
 // });
+
+
+
 test('@regression @TC-NADA-38 verify the credit score radio buttons are displayed and user can check the credit score', async ({ page }) => {
     const financialInfoPage = new FinancialInfoPage(page);
     await financialInfoPage.navigateToFinancialInfoPage() 

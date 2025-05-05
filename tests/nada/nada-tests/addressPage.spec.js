@@ -24,7 +24,7 @@ test('@regression @TC-NADA-53 verify user can select address from dropdown', asy
 
     const addressPage = new AddressPage(page);
     await addressPage.navigateToAddressPage();
-    await addressPage.enterPropertyAddress('483, Wayne StJackson, MO, USA');
+    await addressPage.enterPropertyAddress('483, Wayne St, Jackson, MO, USA');
     await addressPage.selectTheAddressFromDropdown();
     const propertyAddressValue = await addressPage.propertyAddresstxt.inputValue();
     expect(propertyAddressValue).toBe('483 Wayne St, Jackson, MO, USA'); 
@@ -50,7 +50,8 @@ test('@regression @TC-NADA-56 verify the address menu is highlighted', async ({ 
     const addressPage = new AddressPage(page);
     await addressPage.navigateToAddressPage();
     const isHighlighted = await addressPage.addressMenu.evaluate((element) => {
-        return window.getComputedStyle(element).borderColor === 'rgb(0, 198, 94)'; // Checks if the border color is green
+        //return window.getComputedStyle(element).borderColor === 'rgb(0, 198, 94)'; // Checks if the border color is green
+        return window.getComputedStyle(element).getPropertyValue('border-color') === 'rgb(0, 198, 94)'; // Checks if the border color is green
     }); 
     console.log(isHighlighted);
     if(isHighlighted === true)

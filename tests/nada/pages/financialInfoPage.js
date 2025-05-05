@@ -1,6 +1,8 @@
 import {expect} from '@playwright/test';
 import { HomeValuePage } from '../pages/homeValuePage.js';
 
+
+
 export class FinancialInfoPage {
     constructor(page) {
         this.page = page;
@@ -65,7 +67,9 @@ export class FinancialInfoPage {
     }
     async clickNextButton() {
         await this.nextbtn.click();
-        await this.page.waitForTimeout(2000);
+        await this.page.waitForURL('**/has-fbm');
+        //await this.page.waitForNavigation({ waitUntil: 'networkidle' });
+
         }
     async verifyLatePaymentsDetailsYesbtnIsVisible() {
     

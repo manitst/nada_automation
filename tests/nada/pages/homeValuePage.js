@@ -79,7 +79,9 @@ export class HomeValuePage {
     }
     async clickBackButton() {
         await this.backbtn.click();
-        await this.page.waitForTimeout(2000);
+        //await this.page.waitForTimeout(2000);
+       // await this.page.waitForNavigation();
+        return this.page.url();
     }
     verifyUserDirectedToContactPage() {
         return this.page.url();
