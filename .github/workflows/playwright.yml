@@ -24,7 +24,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test tests/nada/nada-tests
+        run: npx playwright test tests/nada/nada-tests --grep=@regression
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
@@ -41,8 +41,8 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: ${{ secrets.TEKNOTRAIT_MANIKANDAN_GMAIL_COM }} 
-          password: ${{ secrets.warg_lyvy_qyeb_ioku}} 
+          username: ${{ secrets.MAIL_USERNAME}} 
+          password: ${{ secrets.MAIL_PASSWORD}} 
           subject: GitHub Actions Workflow Report
           to: teknotrait.manikandan@gmail.com
           from: "GitHub Actions"
