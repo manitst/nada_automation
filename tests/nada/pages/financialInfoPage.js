@@ -67,7 +67,7 @@ export class FinancialInfoPage {
     }
     async clickNextButton() {
         await this.nextbtn.click();
-        await this.page.waitForURL('**/has-fbm');
+        //await this.page.waitForURL('**/has-fbm');
         //await this.page.waitForNavigation({ waitUntil: 'networkidle' });
 
         }
