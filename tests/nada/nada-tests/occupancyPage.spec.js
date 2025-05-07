@@ -1,6 +1,4 @@
 import {test,expect} from '@playwright/test';
-import { HasFBMPage } from '../pages/hasFBMPage.js';
-import { AddressPage } from '../pages/addressPage.js';
 import { OccupancyPage } from '../pages/occupancyPage.js';
 import { HomeValuePage } from '../pages/homeValuePage.js';
 
@@ -84,4 +82,26 @@ test('@regression @TC-NADA-65 verify occupancy step number is displayed and matc
     expect(stepNumber).toContain('6'); 
     const stepNumberExtracted = stepNumber.match(/\d+/)?.[0];
     expect(occupancyMenuNumber).toBe(stepNumberExtracted);
+});
+test('@regression @TC-NADA-66 verify error message when no address is entered for secondary home', async ({ page }) => {
+    test.setTimeout(40000);
+    const occupancyPage = new OccupancyPage(page);
+    await occupancyPage.triggerSecondaryHomeAddressError();
+    const currentURL = await occupancyPage.page.url();
+    expect(currentURL).toContain('occupancy');
+    console.log('User is in occupancy page after clicking next button without entering address for secondary home');
+    const errorMessage = await occupancyPage.secondaryHomeAddressError.innerText();
+    console.log('errorMessage-', errorMessage);
+    expect(errorMessage).toContain('Please type in your address and select an option from the list');
+});
+test('@regression @TC-NADA-67 verify error message when no address is entered for investment home', async ({ page }) => {
+    test.setTimeout(40000);
+    const occupancyPage = new OccupancyPage(page);
+    await occupancyPage.triggerInvestmentHomeAddressError();
+    const currentURL = await occupancyPage.page.url();
+    expect(currentURL).toContain('occupancy');
+    console.log('User is in occupancy page after clicking next button without entering address for investment home');
+    const errorMessage = await occupancyPage.investmentHomeAddressError.innerText();
+    console.log('errorMessage-', errorMessage);
+    expect(errorMessage).toContain('Please type in your address and select an option from the list');
 });

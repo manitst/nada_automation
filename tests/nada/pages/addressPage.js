@@ -5,9 +5,8 @@ export class AddressPage {
     constructor(page) {
         this.page = page;
         this.propertyAddresstxt = page.getByRole('textbox', { name: 'Property Address' });
-        this.addressDropDown = page.getByText('Wayne StJackson, MO, USA');
-              //this.addressDropDown = page.locator('//html/body/div[5]/div[1]/span[2]/span');
-        
+        //this.addressDropDown = page.getByText('Wayne StJackson, MO, USA').nth(1); // Updated selector for address dropdown
+        this.addressDropDown = page.locator('//html/body/div[5]/div[1]/span[2]/span');
         this.nextbtn = page.getByRole('button', { name: 'Next' });
         this.addressErrorMessage = page.getByText('Please type in your address and select an option from the list');
         this.backbtn = page.getByText('Back');

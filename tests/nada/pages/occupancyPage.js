@@ -11,12 +11,13 @@ export class OccupancyPage {
         this.secondaryHomeAddressDropDown = page.getByText('Jefferson City').nth(1); // Updated selector for secondary home address
         this.investmentHomeAddress = page.locator('input[name="address"]'); // Updated selector for primary home address
         this.investmentHomeAddressDropDown = page.getByText('Washington, MO, USA').nth(1);
-        
         this.nextbtn = page.getByRole('button', { name: 'Next' });
         this.backbtn = page.getByText('Back');
         this.occupancyMenu = page.getByRole('link', { name: 'Occupancy' })
         this.occupancyMenuNumber = page.locator('//*[@id="__next"]/div[1]/div[2]/aside/div[2]/a[6]/div/div');
         this.stepNumber = page.locator('span:has-text("Step 6")');
+        this.secondaryHomeAddressError = page.locator('text=Please type in your address and select an option from the list');
+        this.investmentHomeAddressError = page.locator('text=Please type in your address and select an option from the list');
     }
     async navigateToOccupancyPage() {
         const addressPage = new AddressPage(this.page);
@@ -54,8 +55,19 @@ export class OccupancyPage {
         //await this.nextbtn.waitFor();
         await this.nextbtn.click();
         console.log('Next button in occupancy page is clicked');
-        await this.page.waitForNavigation({ waitUntil: 'networkidle' });
         return this.page.url();
+    }
+    async triggerSecondaryHomeAddressError() {
+        const occupancyPage = new OccupancyPage(this.page);
+        await occupancyPage.navigateToOccupancyPage();
+        await occupancyPage.clickSecondaryHomeRadioButton();
+        await occupancyPage.clickNextButton();
+    }
+    async triggerInvestmentHomeAddressError() {
+        const occupancyPage = new OccupancyPage(this.page);
+        await occupancyPage.navigateToOccupancyPage();
+        await occupancyPage.clickInvestmentRadioButton();
+        await occupancyPage.clickNextButton();
     }
 
 }
