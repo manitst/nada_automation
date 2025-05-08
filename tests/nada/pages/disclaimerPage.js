@@ -42,6 +42,7 @@ async enterSSN(ssn) {
     }
 async clickIAgreeButton() {
         await this.iAgreeButton.click();
+        console.log('I Agree button is clicked');
     }
 async clickBack() {
         await this.backbtn.click();
