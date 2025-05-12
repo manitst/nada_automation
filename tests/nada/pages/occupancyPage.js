@@ -3,7 +3,7 @@ import { AddressPage } from "./addressPage";
 export class OccupancyPage {
     constructor(page) {
         this.page = page;
-        
+
         this.occupancyTypePrimaryHomerdbtn = page.getByText('Primary Home');
         this.occupancyTypeSecondaryHomerdbtn = page.getByText('Secondary Home');
         this.occupancyTypeInvestmentrdbtn = page.getByText('Investment');
@@ -50,7 +50,7 @@ export class OccupancyPage {
         console.log('Investment home address is entered');
         await this.investmentHomeAddressDropDown.click();
         console.log('Investment home address is selected from dropdown');
-    }   
+    }
     async clickNextButton() {
         //await this.nextbtn.waitFor();
         await this.nextbtn.click();

@@ -1,4 +1,4 @@
-import {test,expect} from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 export class FAQsPage {
     constructor(page) {
@@ -12,7 +12,7 @@ export class FAQsPage {
     }
     async navigateToFAQs() {
         await this.page.goto(this.faqsPageURL, { waitUntil: 'domcontentloaded' });
-    
+
     }
     async getFAQsHeader() {
         //const faqsHeader = this.FAQsectionText
@@ -25,7 +25,7 @@ export class FAQsPage {
     }
     async verifyUserExpandsFAQsSectionQuestion1() {
 
-       await this.FAQsectionQuestion1.click();
+        await this.FAQsectionQuestion1.click();
         return this.FAQsectionQuestion1;
     }
     async verifyFAQsQuestionExpandable() {

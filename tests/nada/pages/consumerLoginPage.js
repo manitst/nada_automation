@@ -1,34 +1,33 @@
 import { expect } from '@playwright/test';
 
 export class ConsumerLoginPage {
-    constructor(page) {    
-    this.page = page;
-    this.consumerLoginPageURL = 'https://hitch-hei.onrender.com/apply/login';
-    this.consumerLoginbtn = this.page.getByRole('link', { name: 'Consumer Login' })
-    this.enterEmailText = this.page.getByRole('textbox', { name: 'Enter email' })
-    this.submitbtn = this.page.getByRole('button', { name: 'Submit' })
-    this.successMessagePopup = this.page.locator('text=A magic link has been sent to your inbox')
-    this.currentURL = 'https://hitch-hei.onrender.com'
+    constructor(page) {
+        this.page = page;
+        this.consumerLoginPageURL = 'https://hitch-hei.onrender.com/apply/login';
+        this.consumerLoginbtn = this.page.getByRole('link', { name: 'Consumer Login' })
+        this.enterEmailText = this.page.getByRole('textbox', { name: 'Enter email' })
+        this.submitbtn = this.page.getByRole('button', { name: 'Submit' })
+        this.successMessagePopup = this.page.locator('text=A magic link has been sent to your inbox')
+        this.currentURL = 'https://hitch-hei.onrender.com'
 
 
-    
+
     }
-    async navigateToConsumerLoginPage()
-    {
+    async navigateToConsumerLoginPage() {
 
         await this.page.goto(this.consumerLoginPageURL, { waitUntil: 'domcontentloaded' });
     }
     async verifyUserDirectsToConsumerLoginPage() {
-        
-        
+
+
         await expect(this.page).toHaveURL('https://hitch-hei.onrender.com/apply/login');
     }
     async verifyEnterEmailPlaceHolderText() {
-        const placeHolderText = await this.page.getByRole('textbox',{name: 'Enter email'}).getAttribute('placeholder');
+        const placeHolderText = await this.page.getByRole('textbox', { name: 'Enter email' }).getAttribute('placeholder');
         expect(placeHolderText).toBe('Enter email');
     }
     async enterEmail(email) {
-        await this.enterEmailText.fill(email);  
+        await this.enterEmailText.fill(email);
     }
     async verifyMagicLinkIsSent() {
         await this.submitbtn.click()
@@ -48,12 +47,12 @@ export class ConsumerLoginPage {
 
     }
     async verifyWithoutEmailaddress() {
-        
+
         await this.submitbtn.click()
         await expect(this.page).toHaveURL('https://hitch-hei.onrender.com/apply/contact');
 
-        
-      
+
+
     }
 
 

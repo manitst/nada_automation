@@ -1,7 +1,7 @@
 import { OccupancyPage } from "./occupancyPage";
 
 export class DisclaimerPage {
-constructor(page) {
+    constructor(page) {
         this.page = page;
         this.dobText = page.getByRole('textbox', { name: 'MM/DD/YYYY' });
         //this.ssnText = page.locator('[id=":r1d:"]');
@@ -12,11 +12,11 @@ constructor(page) {
         this.backbtn = page.getByText('Back');
         this.occupancyMenu = page.getByRole('link', { name: 'Occupancy' })
         this.disclaimerMenuNumber = page.locator('//*[@id="__next"]/div[1]/div[2]/aside/div[2]/a[7]/div/div');
-        
+
         this.stepNumber = page.locator('span:has-text("Step 7")');
         this.disclaimerCheckboxError = page.locator('text=Agree to Terms and Conditions');
     }
-async navigateToDisclaimerPage() {
+    async navigateToDisclaimerPage() {
         const occupancyPage = new OccupancyPage(this.page);
         await occupancyPage.navigateToOccupancyPage();
         //await occupancyPage.clickNextButton();
@@ -25,11 +25,11 @@ async navigateToDisclaimerPage() {
         await this.page.waitForURL('**/disclaimer'); // Wait for the URL to contain 'disclaimer'
         return this.page.url(); // Return the current URL of the page
     }
-async enterDOB(dob) {
+    async enterDOB(dob) {
         await this.dobText.fill(dob);
         console.log('DOB is entered');
     }
-async enterSSN(ssn) {
+    async enterSSN(ssn) {
         //await this.ssnText.clear();
         // await this.page.waitForSelector(this.ssnText, { state: 'visible' });
         await this.ssnText.isVisible();
@@ -40,16 +40,16 @@ async enterSSN(ssn) {
 
         console.log('SSN is entered');
     }
-async clickIAgreeButton() {
+    async clickIAgreeButton() {
         await this.iAgreeButton.click();
         console.log('I Agree button is clicked');
     }
-async clickBack() {
+    async clickBack() {
         await this.backbtn.click();
     }
-async clickDisclaimerCheckbox() {
+    async clickDisclaimerCheckbox() {
         await this.disclaimerCheckbox.click();
-        
+
     }
 
 }

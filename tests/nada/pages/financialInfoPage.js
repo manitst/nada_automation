@@ -1,4 +1,4 @@
-import {expect} from '@playwright/test';
+import { expect } from '@playwright/test';
 import { HomeValuePage } from '../pages/homeValuePage.js';
 
 
@@ -10,9 +10,9 @@ export class FinancialInfoPage {
         this.creditscorebtw500and539 = this.page.getByRole('radio', { name: '- 539' })
         this.creditscorebtw540and579 = this.page.getByRole('radio', { name: '- 579' });
         this.creditscorebtwabove580 = this.page.getByRole('radio', { name: '+' });
-        this.latePaymentsDetailsYesbtn= this.page.getByRole('radio', { name: 'Yes' });
-        this.latePaymentsDetailsNobtn= this.page.getByRole('radio', { name: 'No' }); 
-        this.nextbtn = this.page.getByRole('button', { name: 'Next' }); 
+        this.latePaymentsDetailsYesbtn = this.page.getByRole('radio', { name: 'Yes' });
+        this.latePaymentsDetailsNobtn = this.page.getByRole('radio', { name: 'No' });
+        this.nextbtn = this.page.getByRole('button', { name: 'Next' });
         this.backbtn = this.page.getByText('Back');
         this.financialInfoMenu = this.page.getByRole('link', { name: 'Financial Info' })
         this.financialInfoMenuNumber = this.page.locator('//*[@id="__next"]/div[1]/div[2]/aside/div[2]/a[3]/div/div');
@@ -27,7 +27,7 @@ export class FinancialInfoPage {
         await homeValuePage.navigateToHomeValuePage();
         await homeValuePage.enterHomeValueTxt('500000')
         await homeValuePage.enterMortgageBalanceTxt('20000')
-        await homeValuePage.clickpropertyTypeDropdown();    
+        await homeValuePage.clickpropertyTypeDropdown();
         await homeValuePage.propertyTypeSingleFamilyHome.click();
         await homeValuePage.clickNextButton();
         await this.page.waitForTimeout(1000);
@@ -45,11 +45,11 @@ export class FinancialInfoPage {
         } else if (creditScore >= 500 && creditScore <= 539) {
             await this.creditscorebtw500and539.click();
             console.log('Credit score is between 500 and 539');
-            return this.creditscorebtw500and539;                    
+            return this.creditscorebtw500and539;
         } else if (creditScore >= 540 && creditScore <= 579) {
             await this.creditscorebtw540and579.click();
             console.log('Credit score is between 540 and 579');
-            return this.creditscorebtw540and579;    
+            return this.creditscorebtw540and579;
         } else if (creditScore >= 580) {
             await this.creditscorebtwabove580.click();
             console.log('Credit score is equal or above 580');
@@ -57,10 +57,10 @@ export class FinancialInfoPage {
         } else {
             throw new Error('Invalid credit score option');
         }
-        
+
     }
     async clickLatePaymentsDetailsNoBtn() {
-                await this.latePaymentsDetailsNobtn.click();
+        await this.latePaymentsDetailsNobtn.click();
     }
     async clickLatePaymentsDetailsYesBtn() {
         await this.latePaymentsDetailsYesbtn.click();
@@ -70,36 +70,36 @@ export class FinancialInfoPage {
         //await this.page.waitForURL('**/has-fbm');
         //await this.page.waitForNavigation({ waitUntil: 'networkidle' });
 
-        }
+    }
     async verifyLatePaymentsDetailsYesbtnIsVisible() {
-    
+
         await this.latePaymentsDetailsYesbtn.waitFor();
         return this.latePaymentsDetailsYesbtn;
     }
     async verifyLatePaymentsDetailsNobtnIsVisible() {
         await this.latePaymentsDetailsNobtn.waitFor();
         return this.latePaymentsDetailsNobtn;
-    } 
+    }
     async verifyUserDirectedToHasFBMPage() {
         const currentURL = this.page.url();
         return currentURL;
     }
     async clickBackButton() {
-    await this.backbtn.click();
-    await this.page.waitForTimeout(2000);
+        await this.backbtn.click();
+        await this.page.waitForTimeout(2000);
     }
     async verifyUserdirectedtoHomeValuePage() {
         const currentURL = this.page.url();
         return currentURL;
     }
-verifyLatePayementsDetailsErrorMessage() {
-    this.latePaymentsDetailsErrorMessage.waitFor();
-    return this.latePaymentsDetailsErrorMessage.innerText();
-}
-verifyEnterCreditScoreErrorMessage() {
-    this.enterCreditScoreErrorMessage.waitFor();
-    return this.enterCreditScoreErrorMessage.innerText();
-}
+    verifyLatePayementsDetailsErrorMessage() {
+        this.latePaymentsDetailsErrorMessage.waitFor();
+        return this.latePaymentsDetailsErrorMessage.innerText();
+    }
+    verifyEnterCreditScoreErrorMessage() {
+        this.enterCreditScoreErrorMessage.waitFor();
+        return this.enterCreditScoreErrorMessage.innerText();
+    }
 
 
 }

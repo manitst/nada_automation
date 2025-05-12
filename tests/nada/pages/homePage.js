@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 
 export class HomePage {
-     
+
     constructor(page) {
         this.page = page;
         this.homePageURL = 'https://hitch-hei.onrender.com/';
@@ -60,11 +60,11 @@ export class HomePage {
         this.licensingLink.waitFor();
         return this.licensingLink;
     }
-    
+
     verifyHeaderFAQbtn() {
         this.FAQHeaderbtn.waitFor();
         this.FAQHeaderbtn.isVisible();
-        return this.FAQHeaderbtn;        
+        return this.FAQHeaderbtn;
     }
     verifyHeaderWholesalePortalLoginbtn() {
         this.wholesalePrtalLoginbtn.waitFor();
@@ -73,12 +73,12 @@ export class HomePage {
     verifyHeaderConsumerLoginbtn() {
         this.consumerLoginbtn.waitFor();
         return this.consumerLoginbtn;
-    }   
+    }
     verifyHeaderApplyNowbtn() {
         this.applynowbtn.waitFor();
         return this.applynowbtn;
-    }      
-   
+    }
+
     verifyFAQVideoIsPresent() {
         this.FAQVideo.waitFor({ state: 'visible' });
         return this.FAQVideo;
@@ -101,7 +101,7 @@ export class HomePage {
 
         expect(currentTime).toBeGreaterThan(initialTime);
 
-        await pauseButton.click({ force: true }); 
+        await pauseButton.click({ force: true });
     }
     verifyHomePageApplyNowbtn() {
         this.applynowHerobtn.waitFor();
@@ -124,15 +124,15 @@ export class HomePage {
         return this.unlockOfferbtn;
     }
     async verifyClickingFAQbutton() {
-        
+
         await this.FAQHeaderbtn.click();
         const currentURL = this.page.url();
         expect(currentURL).toContain('#FAQ');
         await this.page.goto(this.homePageURL);
     }
 
-   
-  
+
+
     async verifyClickingWholesalePortalLoginbtn() {
         await this.wholesalePrtalLoginbtn.click();
         const currentURL = this.page.url();

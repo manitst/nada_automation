@@ -1,4 +1,4 @@
-import {} from '@playwright/test';
+import { } from '@playwright/test';
 import { HomePage } from '../pages/homePage.js';
 import { ContactPage } from '../pages/contactPage.js';
 import { generateUniqueEmail } from "../utils/commonUtils.js";
@@ -12,13 +12,13 @@ export class HomeValuePage {
         this.propertyTypeDropdownListItem = this.page.locator('[id=":rc:"]')
         this.propertyTypeSingleFamilyHome = this.page.getByRole('option', { name: 'Single Family' })
         this.nextbtn = this.page.getByRole('button', { name: 'Next' });
-        this.propertyDetailsMenu = this.page.getByRole('link', { name: 'Property Details' }) 
+        this.propertyDetailsMenu = this.page.getByRole('link', { name: 'Property Details' })
         this.propertyDetailsMenuNumber = this.page.locator('//*[@id="__next"]/div[1]/div[2]/aside/div[2]/a[2]/div/div');
         this.stepNumber = this.page.locator('span:has-text("Step 2")');
-        this.homeValueTextErrorMessage = this.page.getByText('Home value is required') 
+        this.homeValueTextErrorMessage = this.page.getByText('Home value is required')
         this.mortgageBalanceTextErrorMessage = this.page.getByText('Mortgage balance is required')
         this.propertyTypeDropdownErrorMessage = this.page.getByText('Please select Property type')
-        this.backbtn = this.page.getByText('Back'); 
+        this.backbtn = this.page.getByText('Back');
         //this.logOutbtn = this.page.getByRole('link', { name: 'Log Out' })
         this.logOutbtn = this.page.getByText('Log Out')
 
@@ -36,21 +36,21 @@ export class HomeValuePage {
         await contactpage.clickHomeSharePgmbtn()
         await contactpage.clickNextButton();
         await this.page.waitForTimeout(1000);
-       
+
     }
 
     async clickpropertyTypeDropdown() {
         await this.propertyTypeDropdown.click();
-    }   
+    }
     async getTheDropdownValue() {
-        
+
         const dropdownOptions = await this.propertyTypeDropdownListItem.allInnerTexts();
         console.log(dropdownOptions[0].split('\n').join('\n'));
         return dropdownOptions;
     }
     async enterHomeValueTxt(homeValue) {
         await this.homeValueText.fill(homeValue);
-    }   
+    }
     async enterMortgageBalanceTxt(mortgageBalance) {
         await this.mortgageBalanceText.fill(mortgageBalance);
     }
@@ -80,7 +80,7 @@ export class HomeValuePage {
     async clickBackButton() {
         await this.backbtn.click();
         //await this.page.waitForTimeout(2000);
-       // await this.page.waitForNavigation();
+        // await this.page.waitForNavigation();
         return this.page.url();
     }
     verifyUserDirectedToContactPage() {

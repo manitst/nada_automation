@@ -2,11 +2,11 @@ import { expect } from '@playwright/test';
 import { HomePage } from "../../nada/pages/homePage.js";
 
 
-export class ContactPage{  
+export class ContactPage {
 
     constructor(page) {
-       
-     
+
+
         this.page = page;
         this.applynowbtn = this.page.locator('[id=":r3:"]');
         this.firstnametext = this.page.locator('[id=":r0:"]');
@@ -15,10 +15,10 @@ export class ContactPage{
         this.phonenumbertext = this.page.locator('[id=":r3:"]');
         this.nextbtn = this.page.locator('[id="pos_email_next_button"]');
         this.errorMessageFirstName = this.page.getByText('First name required')
-        this.errorMessageLastName = this.page.getByText('Last name required');   
+        this.errorMessageLastName = this.page.getByText('Last name required');
         this.errorMessageEmail = this.page.getByText('Email required');
         this.errorMessagePhoneNumber = this.page.getByText('Phone number required');
-        this.homeSharePgmbtn = this.page.getByRole('radio', { name: 'No' }) 
+        this.homeSharePgmbtn = this.page.getByRole('radio', { name: 'No' })
         this.contactInfoMenu = this.page.getByRole('link', { name: 'Contact Info' })
         this.contactInfoMenuNumber = this.page.locator('//*[@id="__next"]/div[1]/div[2]/aside/div[2]/a[1]/div/div');
         this.stepNumber = this.page.locator('span:has-text("Step 1")');
@@ -28,9 +28,9 @@ export class ContactPage{
         this.licensingLink = this.page.getByRole('link', { name: 'Licensing', exact: true });
         this.logoutlink = this.page.getByRole('link', { name: 'Log Out' })
         this.giveUsACallNumber = this.page.getByRole('link', { name: '(833) 463-' });
-        this.emailUsLink = this.page.getByRole('link', { name: 'processing@nada.co' });  
-            }
-  
+        this.emailUsLink = this.page.getByRole('link', { name: 'processing@nada.co' });
+    }
+
     async navigateToHomePage() {
         const homepage = new HomePage(this.page);
         await homepage.navigateToHomePage();
@@ -38,7 +38,7 @@ export class ContactPage{
 
     async clickApplyNowButton() {
         await this.applynowbtn.click();
-    } 
+    }
     async verifyFirstNamePlaceHolderText() {
         this.firstnametext.waitFor();
         return await this.firstnametext.getAttribute('placeholder');
@@ -59,16 +59,17 @@ export class ContactPage{
     }
     async enterEmail(email) {
         await this.emailtext.fill(email);
-    }  
+        console.log('The email id is : ', email);
+    }
     async verifyPhoneNumberPlaceHolderText() {
         await this.phonenumbertext.waitFor();
         return await this.phonenumbertext.getAttribute('placeholder');
-    }    
+    }
     async enterPhonenumber(phonenumber) {
         await this.phonenumbertext.fill(phonenumber);
-    } 
+    }
     async clickNextButton() {
-            await this.nextbtn.click();
+        await this.nextbtn.click();
     }
     async verifyContactPage() {
         await expect(this.page.getByRole('link', { name: '(833) 463-' })).toBeVisible();
@@ -140,5 +141,5 @@ export class ContactPage{
 
 
 
-           
+
 }

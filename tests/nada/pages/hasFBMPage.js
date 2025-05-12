@@ -1,11 +1,11 @@
-import {expect} from '@playwright/test';
-import {FinancialInfoPage} from './financialInfoPage.js';
+import { expect } from '@playwright/test';
+import { FinancialInfoPage } from './financialInfoPage.js';
 
 
 export class HasFBMPage {
     constructor(page) {
         this.page = page;
-        this.foreclosureYesbtn = page.locator('div').filter({ hasText: /^Did you have any foreclosures in the last 4 years\?YesNo$/ }).getByLabel('Yes');   
+        this.foreclosureYesbtn = page.locator('div').filter({ hasText: /^Did you have any foreclosures in the last 4 years\?YesNo$/ }).getByLabel('Yes');
         this.foreclosureNobtn = page.locator('div').filter({ hasText: /^Did you have any foreclosures in the last 4 years\?YesNo$/ }).getByLabel('No');
         this.bankruptcyYesbtn = page.locator('div').filter({ hasText: /^Did you file for bankruptcy in the last 4 years\?YesNo$/ }).getByLabel('Yes');
         this.bankruptcyNobtn = page.locator('div').filter({ hasText: /^Did you file for bankruptcy in the last 4 years\?YesNo$/ }).getByLabel('No');
@@ -19,13 +19,13 @@ export class HasFBMPage {
         this.stepNumber = page.locator('span:has-text("Step 4")');
         this.foreclosureErrorMessage = page.getByText('Please select an option for foreclosures')
         this.bankruptcyErrorMessage = page.getByText('Please select an option for bankruptcy')
-        this.modificationErrorMessage = page.getByText('Please select an option for modifications')        
+        this.modificationErrorMessage = page.getByText('Please select an option for modifications')
     }
     async navigateToHasFBMPage() {
         const financialInfoPage = new FinancialInfoPage(this.page);
         await financialInfoPage.navigateToFinancialInfoPage();
-        await financialInfoPage.clickCreditScoreBtn('600'); 
-        await financialInfoPage.clickLatePaymentsDetailsNoBtn(); 
+        await financialInfoPage.clickCreditScoreBtn('600');
+        await financialInfoPage.clickLatePaymentsDetailsNoBtn();
         await financialInfoPage.clickNextButton();// Return the current URL of the page
         return this.page.url(); // Return the current URL of the page
     }
@@ -33,7 +33,7 @@ export class HasFBMPage {
     async clickForeclosureYesbtn() {
         await this.foreclosureYesbtn.click();
         console.log('Foreclosure YES radio button is checked');
-    } 
+    }
     async clickForeclosureNobtn() {
         await this.foreclosureNobtn.click();
         console.log('Foreclosure NO radio button is checked');
@@ -58,8 +58,8 @@ export class HasFBMPage {
         await this.nextbtn.click();
         //await this.page.waitForNavigation({ waitUntil: 'networkidle' });
         console.log('Next button in has FBM page is clicked');
-        return this.page.url(); 
-    }  
+        return this.page.url();
+    }
     verifyUsergetsPopupMessage() {
         this.popupMessage.waitFor({ state: 'visible' });
         console.log('Popup message is displayed:');

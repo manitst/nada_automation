@@ -14,7 +14,7 @@ export class IncomePage {
         this.nextbtn = page.getByRole('button', { name: 'Next' });
     }
     async navigateToIncomePage() {
-        
+
         const offerPreviewPage = new OfferPreviewPage(this.page);
         await offerPreviewPage.navigateToOfferPreviewPage();
         const currentUrl = await offerPreviewPage.clickNextButton();
@@ -28,16 +28,16 @@ export class IncomePage {
     }
     async fillCurrentEmployerName(employername) {
         await this.currentEmployerTextbox.fill(employername);
-        console.log('Current employer name is filled');        
+        console.log('Current employer name is filled');
     }
-   
+
     async fillStartWorkingDate(startingdate) {
         await this.startOWorkingDate.fill(startingdate);
-        console.log('Start working date is filled');        
+        console.log('Start working date is filled');
     }
     async enterTotalExperience(totalexp) {
         await this.totalExperience.fill(totalexp);
-        console.log('Total experience is filled');        
+        console.log('Total experience is filled');
     }
 
     async clickBackButton() {
@@ -47,7 +47,7 @@ export class IncomePage {
     async clickNextButton() {
         await this.nextbtn.click();
         console.log('Next button in income page is clicked');
-        await this.page.waitForURL('**/title-information'); 
-        return this.page.url(); 
+        await this.page.waitForURL('**/title-information');
+        return this.page.url();
     }
 }
