@@ -60,6 +60,7 @@ export class HomeValuePage {
     async clickNextButton() {
         await this.nextbtn.click();
         await this.page.waitForTimeout(2000);
+        console.log('The Next button in Home value page is clicked');
     }
     verifyUserdirectedtoFinancialInfoPage() {
         return this.page.url();

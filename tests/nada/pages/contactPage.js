@@ -70,6 +70,7 @@ export class ContactPage {
     }
     async clickNextButton() {
         await this.nextbtn.click();
+        console.log('Next button in contact info page is clicked');
     }
     async verifyContactPage() {
         await expect(this.page.getByRole('link', { name: '(833) 463-' })).toBeVisible();

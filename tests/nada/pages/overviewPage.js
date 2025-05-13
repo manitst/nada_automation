@@ -19,6 +19,9 @@ export class OverviewPage {
         this.mortgageStatementDocument = page.getByText('Add documents').nth(3);
         this.homeownersInsuranceDocument = page.getByText('Add documents').nth(4);
         this.fileUploadSuccessMessage = page.getByText('File uploaded successfully!');
+        this.documentMenu = page.getByRole('link', { name: 'Documents' })
+        this.offerDetailsMenu = page.getByRole('link', { name: 'Offer Details' })
+        this.faqMenu = page.getByRole('link', { name: 'FAQ' })
 
     }
 
@@ -41,21 +44,12 @@ export class OverviewPage {
         console.log(await this.idDocumentButtonLabel.evaluate(el => el.textContent));
 
         await this.idDocument.setInputFiles('C:\\Users\\User\\Pictures\\Saved Pictures\\Chevrolet-Beat-Activ.jpg');
-        //await this.page.waitForFunction(() => {
-        //return document.querySelector(this.ssnProofButtonLabel)?.textContent === 'In Progress';
-        // const isInProgress = await this.idDocumentButtonLabel.evaluate(el => el.textContent === 'In Progress')
-        // console.log(isInProgress);
-        //});
-        // await this.page.waitForFunction((selector) => {
-        //     const el = document.querySelector(selector);
-        //     return el && el.textContent === 'In Progress';
-        // }, {}, this.idDocumentButtonLabel); // Replace with actual selector
+        await this.page.waitForLoadState('networkidle');
+        // await this.page.waitForFunction(async () => {
+        //     const elements = Array.from(document.querySelectorAll('.css-1wr0o59'));
 
-        // console.log('✅ Button label changed to "In Progress"');
-        await this.page.waitForFunction(async () => {
-            const elements = Array.from(document.querySelectorAll('.css-1wr0o59')); // Get all matching elements
-            return elements.some(el => el.textContent === 'In Progress'); // Check if any element has the correct text
-        });
+        //     return elements.some(el => el.textContent === 'In Progress');
+        // });
 
         console.log('Document for ID proof is uploaded');
         return await this.fileUploadSuccessMessage.innerText();
@@ -84,5 +78,21 @@ export class OverviewPage {
         console.log('Document for mortgage statement is uploaded')
         return this.fileUploadSuccessMessage.innerText();
     }
+    async navigateToDocument() {
+        await this.documentMenu.click();
+        console.log('The use is in Document page');
+        return this.page.url();
+    }
+    async navigateToOfferDetails() {
+        await this.offerDetailsMenu.click();
+        console.log('The use is in Offer Details page');
+        return this.page.url();
+    }
+    async navigateToFAQs() {
+        await this.faqMenu.click();
+        console.log('The use is in FAQs page');
+        return this.page.url();
+    }
+
 
 }
