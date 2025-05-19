@@ -11,6 +11,8 @@ test('@regression @TC-NADA-82 Verify user can upload documents', async ({ page }
     console.log('current URL', urlAfterClickingNext);
     await expect(page).toHaveURL('https://hitch-hei.onrender.com/offer/overview');
 
+
+
     const successMessagessn = await overviewpage.uploadSSNProofDocument();
     expect(successMessagessn).toBe('File uploaded successfully!');
     const successMessageIncome = await overviewpage.uploadProofOfIncomeDocument();
@@ -27,4 +29,7 @@ test('@regression @TC-NADA-82 Verify user can upload documents', async ({ page }
     expect(offerdetailsURL).toBe('https://hitch-hei.onrender.com/offer/offer-details');
     const faqURL = await overviewpage.navigateToFAQs();
     expect(faqURL).toBe('https://hitch-hei.onrender.com/offer/faq');
+    const reviewandsignurl = await overviewpage.reviewAndSign();
+    console.log(reviewandsignurl);
+
 });

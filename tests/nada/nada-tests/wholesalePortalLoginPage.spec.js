@@ -55,7 +55,7 @@ test('@regression @TC-NADA-14 verify unregistered user does not get magic link '
 //     await wholesalePortalLoginPage.navigateToWholesalePortalLoginPage();
 //     await wholesalePortalLoginPage.enterEmail('test_nada_consumer_login@yopmail.com')
 //     await wholesalePortalLoginPage.getMagicLinkbtn.click();
-//     wholesalePortalLoginPage.verifyUserGetsRedirectedToHomePage(); 
+//     wholesalePortalLoginPage.verifyUserGetsRedirectedToHomePage();
 //     //const redirectedURL = await wholesalePortalLoginPage.verifyUserGetsRedirectedToHomePage(); 
 //     //console.log('Redirected URL:', redirectedURL);
 
@@ -111,7 +111,7 @@ test('@regression @TC-NADA-18 verify user cannot login into portal with invalid 
     await wholesalePortalLoginPage.clickLoginbtn();
     const errorMessagePasswordField = await wholesalePortalLoginPage.errorMessageInPortalLogin.innerText();
     expect(errorMessagePasswordField).toBe('Invalid email or password');
-    
+
 });
 
 
@@ -122,5 +122,5 @@ test('@regression @TC-NADA-19 verify user redirected to passwordless login page 
     await wholesalePortalLoginPage.clickLoginWithPassword();
     expect(wholesalePortalLoginPage.clickLoginWithMagicLinkInstead());
     //expect(wholesalePortalLoginPage.getMagicLinkbtn).toBeVisible(); 
-       
-    });
+
+});

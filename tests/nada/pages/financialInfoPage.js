@@ -68,9 +68,7 @@ export class FinancialInfoPage {
     async clickNextButton() {
         await this.nextbtn.click();
         console.log('The next button in Financial Info page is clicked');
-        //await this.page.waitForURL('**/has-fbm');
-        //await this.page.waitForNavigation({ waitUntil: 'networkidle' });
-
+        await this.page.waitForURL('**/has-fbm');
     }
     async verifyLatePaymentsDetailsYesbtnIsVisible() {
 
@@ -85,22 +83,13 @@ export class FinancialInfoPage {
         const currentURL = this.page.url();
         return currentURL;
     }
-    async clickBackButton() {
-        await this.backbtn.click();
-        await this.page.waitForTimeout(2000);
-    }
+
     async verifyUserdirectedtoHomeValuePage() {
         const currentURL = this.page.url();
         return currentURL;
     }
-    verifyLatePayementsDetailsErrorMessage() {
-        this.latePaymentsDetailsErrorMessage.waitFor();
-        return this.latePaymentsDetailsErrorMessage.innerText();
-    }
-    verifyEnterCreditScoreErrorMessage() {
-        this.enterCreditScoreErrorMessage.waitFor();
-        return this.enterCreditScoreErrorMessage.innerText();
-    }
+
+
 
 
 }

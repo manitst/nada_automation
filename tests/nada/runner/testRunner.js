@@ -2,7 +2,7 @@ import { exec } from 'child_process';
 import fetch from 'node-fetch'; // Ensure you have 'node-fetch' installed
 import { spawn } from 'child_process';
 
-const TAG = process.argv[2] || '@TC-NADA-82'; // Pass the tag dynamically
+const TAG = process.argv[2] || '@TC-NADA-38'; // Pass the tag dynamically
 const SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"; // Replace with your Slack webhook
 
 const sendSlackMessage = async (message) => {
@@ -16,7 +16,7 @@ const sendSlackMessage = async (message) => {
 
 const runPlaywrightTests = () => {
   const command = `npx playwright test --headed --project=firefox --workers=1 --grep="${TAG}" --reporter=allure-playwright,html`;
-  
+
   const process = spawn(command, { shell: true, stdio: "inherit" });
 
   process.on("exit", async (code) => {

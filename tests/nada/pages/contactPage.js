@@ -76,68 +76,13 @@ export class ContactPage {
         await expect(this.page.getByRole('link', { name: '(833) 463-' })).toBeVisible();
         await expect(this.page).toHaveURL('https://hitch-hei.onrender.com/apply/login');
     }
-    async verifyErrorMessageFirstName() {
-        await this.errorMessageFirstName.waitFor();
-        return await this.errorMessageFirstName.innerText();
-    }
-    async verifyErrorMessageLastName() {
-        await this.errorMessageLastName.waitFor();
-        return await this.errorMessageLastName.innerText();
-    }
-    async verifyErrorMessageEmail() {
-        await this.errorMessageEmail.waitFor();
-        return await this.errorMessageEmail.innerText();
-    }
-    async verifyErrorMessagePhoneNumber() {
-        await this.errorMessagePhoneNumber.waitFor();
-        return await this.errorMessagePhoneNumber.innerText();
-    }
+
     async clickHomeSharePgmbtn() {
         await this.homeSharePgmbtn.click();
     }
     async verifyUserDirectedToPropertyDetailsPage() {
         await this.page.waitForTimeout(5000); // Wait for 2 seconds to ensure the page has loaded
         return await this.page.url();
-    }
-    async verifyMenuIsHighlighted() {
-        await this.contactInfoMenu.waitFor();
-        return this.contactInfoMenu;
-    }
-    async getContactInfoMenuNumber() {
-        await this.contactInfoMenuNumber.waitFor();
-        return await this.contactInfoMenuNumber.innerText();
-    }
-    async getStepNumber() {
-        await this.stepNumber.waitFor();
-        return await this.stepNumber.innerText();
-    }
-    async verifyNMLSConsumerAccesslink() {
-        await this.NMLSConsumerAccesslink.waitFor();
-        return this.NMLSConsumerAccesslink;
-    }
-    async verifyPrivacyLink() {
-        await this.privacyLink.waitFor();
-        return this.privacyLink;
-    }
-    async verifyTermsLink() {
-        await this.termsLink.waitFor();
-        return this.termsLink;
-    }
-    async verifyLicensingLink() {
-        await this.licensingLink.waitFor();
-        return this.licensingLink;
-    }
-    async verifyLogoutlink() {
-        await this.logoutlink.waitFor();
-        return this.logoutlink;
-    }
-    async verifyGiveUsACallNumberIsvisible() {
-        await this.giveUsACallNumber.waitFor();
-        return this.giveUsACallNumber;
-    }
-    async verifyEmailUsLinkIsVisible() {
-        await this.emailUsLink.waitFor();
-        return this.emailUsLink;
     }
 
 

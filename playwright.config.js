@@ -2,7 +2,7 @@
 import { defineConfig, devices } from '@playwright/test';
 import fs from 'fs';
 
- 
+
 
 /**
  * Read environment variables from file.
@@ -20,7 +20,7 @@ import fs from 'fs';
 
 export default defineConfig({
 
-  
+
 
 
 
@@ -31,12 +31,12 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   //retries: process.env.CI ? 2 : 0,
-  retries: 1,
+  retries: 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    
+
     ['list'],
     ['html'],
     ['allure-playwright'],
@@ -46,7 +46,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
-    
+
     video: 'on',
     launchOptions: {
       slowMo: 500
@@ -55,7 +55,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     /* Configure action timeout */
-    actionTimeout: 0, 
+    actionTimeout: 0,
   },
   outputDir: 'test-results',
   /* Configure projects for major browsers */
@@ -65,10 +65,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
 
     // {
     //   name: 'webkit',
@@ -102,9 +102,9 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
- // globalTeardown: './tests/Nada/Runner/globalTearDown.js', 
+  // globalTeardown: './tests/Nada/Runner/globalTearDown.js', 
 
- 
+
 
 });
 

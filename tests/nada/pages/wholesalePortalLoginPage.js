@@ -64,7 +64,7 @@ export class WholesalePortalLoginPage {
         return this.inboxMessage;
     }
     verifyUserGetsRedirectedToHomePage() {
-        //this.page.waitForTimeout(2000); 
+        this.page.waitForLoadState('networkidle');
         this.page.goto('https://yopmail.com/en/', { waitUntil: 'domcontentloaded' });
         this.page.waitForTimeout(2000);
         this.enterEmailAddress.fill('test_nada_consumer_login@yopmail.com');

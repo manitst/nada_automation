@@ -45,21 +45,24 @@ export class HomeValuePage {
     async getTheDropdownValue() {
 
         const dropdownOptions = await this.propertyTypeDropdownListItem.allInnerTexts();
-        console.log(dropdownOptions[0].split('\n').join('\n'));
+        console.log('The property Dropdown list item - \n', dropdownOptions[0].split('\n').join('\n'));
         return dropdownOptions;
     }
     async enterHomeValueTxt(homeValue) {
         await this.homeValueText.fill(homeValue);
+        console.log('The home value has been entered as ', homeValue);
     }
     async enterMortgageBalanceTxt(mortgageBalance) {
         await this.mortgageBalanceText.fill(mortgageBalance);
+        console.log('The Mortgage balance is entered as ', mortgageBalance)
     }
     async selectPropertyTypeSingleFamilyHome() {
         await this.propertyTypeSingleFamilyHome.click();
+        console.log('Single Family home is selected from the dropdown');
     }
     async clickNextButton() {
         await this.nextbtn.click();
-        await this.page.waitForTimeout(2000);
+        await this.page.waitForURL('**/credit-score');
         console.log('The Next button in Home value page is clicked');
     }
     verifyUserdirectedtoFinancialInfoPage() {
